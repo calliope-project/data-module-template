@@ -11,14 +11,14 @@ _skip_if_exists:
 # === copier user provided ===
 module_short_name:
   type: str
-  help: Your module's short name as used in snakemake (should be in `snake_case`).
+  help: Please enter your module's short name as used in snakemake (should be in `snake_case`).
   validator: >-
     {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]+$')) %}
     "Must be in `snake_case` (only letters, digits and underscores are valid)."
     {% endif %}
 module_long_name:
   type: str
-  help: Your module's long name (e.g., PV capacity factors, Hydropower, Heat-pump profiles, etc).
+  help: Please enter your module's long name (e.g., PV capacity factors, Hydropower, Heat-pump profiles, etc).
 module_description:
   type: str
   help: "Please provide a description of your module."

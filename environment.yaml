@@ -14,3 +14,4 @@ dependencies:
   - snakemake-minimal >= 8.28.0
   - pip:
     - mkdocs-mermaid2-plugin >= 1.1.0
+    - mkdocs-git-committers-plugin-2 >= 2.5.0

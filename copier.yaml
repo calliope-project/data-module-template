@@ -1,0 +1,20 @@
+# Context variables
+# context:
+#   year: {{ datetime.datetime.now().year }}
+# User provided variables
+module_short_name:
+  type: str
+  help: What is your module's short name?
+  placeholder: my_module_name or my-module-name
+  validator: >-
+    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_\-]+$')) %}
+    "Must be a single word in lowercase containing letters, digits, hypens and underscores."
+    {% endif %}
+module_long_name:
+  type: str
+  help: What is your module's long name?
+  placeholder: My module name
+  validator: >-
+    {% if  module_long_name|length < 1 %}
+    "Please provide a value."
+    {% endif %}

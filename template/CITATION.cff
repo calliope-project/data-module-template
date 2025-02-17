@@ -1,0 +1,13 @@
+# Citation file
+# For more information, see:
+# https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: If you use this software or data produced by it, please cite it using the metadata from this file.
+title:
+repository:
+license:
+doi:
+authors:
+  - given-names:
+    family-names:
+    orcid:

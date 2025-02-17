@@ -1,0 +1,25 @@
+# The module's Input-Output structure, in dictionary form.
+# Used by the automated documentation.
+resources:
+  user:
+    # Descriptions of user-provided files.
+  automatic:
+    # Descriptions of automatically-downloaded files
+results:
+  # Descriptions of module results.
+  #
+wildcards:
+  # Description of wildcards.
+  # Must be present in either resources or results if not empty.
+
+# EXAMPLE:
+# resources:
+#   user:
+#     shapes_{resolution}.geojson: region geometries.
+#   automatic:
+#     technology_data.csv: dataset with technology characteristics.
+# results:
+#   '{resolution}/tech_capacity.parquet': description of output data.
+#   '{resolution}/results_image.png': description of output image.
+# wildcards:
+#   resolution: description of the wildcard’s purpose.

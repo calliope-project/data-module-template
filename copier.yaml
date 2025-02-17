@@ -1,20 +1,40 @@
-# Context variables
-# context:
-#   year: {{ datetime.datetime.now().year }}
-# User provided variables
+# === copier settings ===
+_subdirectory: template
+_templates_suffix: .jinja
+_skip_if_exists:
+  - LICENSE
+  - CITATION.cff
+
+# === copier auto-generated ===
+
+
+# === copier user provided ===
 module_short_name:
   type: str
-  help: What is your module's short name?
-  placeholder: my_module_name or my-module-name
+  help: Your module's short name as used in snakemake (should be in `snake_case`).
   validator: >-
-    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_\-]+$')) %}
-    "Must be a single word in lowercase containing letters, digits, hypens and underscores."
+    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]+$')) %}
+    "Must be in `snake_case` (only letters, digits and underscores are valid)."
     {% endif %}
 module_long_name:
   type: str
-  help: What is your module's long name?
-  placeholder: My module name
-  validator: >-
-    {% if  module_long_name|length < 1 %}
-    "Please provide a value."
-    {% endif %}
+  help: Your module's long name (e.g., PV capacity factors, Hydropower, Heat-pump profiles, etc).
+module_description:
+  type: str
+  help: "Please provide a description of your module."
+license:
+  type: str
+  help: "Do you wish us to auto-generate a license file for you?"
+  choices:
+    - "MIT"
+    - "No thanks"
+author_name:
+  type: str
+  help: "Please provide your full name for the license file."
+  when: "{{ license != 'No thanks' }}"
+pre_commit:
+  type: str
+  help: "Do you wish us to auto-generate a pre-commit CI configuration for you?"
+  choices:
+    - "Yes"
+    - "No thanks"

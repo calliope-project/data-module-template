@@ -1,25 +1,20 @@
-# The module's Input-Output structure, in dictionary form.
-# Used by the automated documentation.
+# Module Input-Output structure for automated doc. generation
 resources:
-  user:
-    # Descriptions of user-provided files.
-  automatic:
-    # Descriptions of automatically-downloaded files
-results:
-  # Descriptions of module results.
-  #
+  user: # All user provided files
+  automatic: # Automatically downloaded files relevant to users
+results: # Resulting files relevant to users
 wildcards:
-  # Description of wildcards.
-  # Must be present in either resources or results if not empty.
+  # All possible wildcards
+  # Must be specified in inside parentheses in resources or results.
 
 # EXAMPLE:
 # resources:
 #   user:
-#     shapes_{resolution}.geojson: region geometries.
+#     shapes_(resolution).geojson: region geometries.
 #   automatic:
 #     technology_data.parquet: dataset with technology characteristics.
 # results:
-#   '{resolution}/tech_capacity.parquet': description of output data.
-#   '{resolution}/results_image.png': description of output image.
+#   '(resolution)/tech_capacity.parquet': description of output data.
+#   '(resolution)/results_image.png': description of output image.
 # wildcards:
 #   resolution: description of the wildcard’s purpose.

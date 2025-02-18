@@ -1,5 +1,4 @@
 # === copier settings ===
-_subdirectory: template
 _min_copier_version: '9.4.1'
 _templates_suffix: .jinja
 _skip_if_exists:

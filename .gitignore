@@ -19,9 +19,8 @@ gurobi.log
 .ipynb_checkpoints
 
 # Mutable folders
-resources/
-results/
-tests/
+tmp/
+temp/
 
 # Mkdocs
 .cache/

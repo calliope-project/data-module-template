@@ -1,5 +1,6 @@
 # === copier settings ===
 _subdirectory: template
+_min_copier_version: '9.4.1'
 _templates_suffix: .jinja
 _skip_if_exists:
   - LICENSE
@@ -32,9 +33,3 @@ author_name:
   type: str
   help: "Please provide your full name for the license file."
   when: "{{ license != 'No thanks' }}"
-pre_commit:
-  type: str
-  help: "Do you wish us to auto-generate a pre-commit CI configuration for you?"
-  choices:
-    - "Yes"
-    - "No thanks"

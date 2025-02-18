@@ -1,4 +1,4 @@
-# Getting started
+# How to get started
 
 We assume you already have `conda` or `mamba` installed in your system.
 If you don't, we recommend following `mamba`'s [installation advice](https://github.com/mamba-org/mamba).

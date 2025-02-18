@@ -17,7 +17,7 @@ wildcards:
 #   user:
 #     shapes_{resolution}.geojson: region geometries.
 #   automatic:
-#     technology_data.csv: dataset with technology characteristics.
+#     technology_data.parquet: dataset with technology characteristics.
 # results:
 #   '{resolution}/tech_capacity.parquet': description of output data.
 #   '{resolution}/results_image.png': description of output image.

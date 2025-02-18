@@ -4,7 +4,7 @@
 
 We enforce the following requirements in all types of projects.
 
-1. **Open-source code**: use an [OSI approved](https://opensource.org/licenses) open-source license such as MIT or Apache 2.0 and be openly available in platforms such as GitHub.
+1. **Open-source code**: projects must use either MIT or Apache 2.0, which are both [OSI approved](https://opensource.org/licenses) open-source licenses, and they must be openly available in platforms such as GitHub.
 2. **Open data**: data produced by projects (dataset tools and data modules in particular) should use a [CC-BY-4.0 license](https://creativecommons.org/licenses/by/4.0/) whenever possible.
 3. **Versioning**: projects must be version controlled with official releases, which can be used to specify the version of the project used in a study and/or dataset, and an accompanying CHANGELOG. Project developers are free to choose their preferred approach (e.g., [SemVer](https://semver.org/) or [CalVer](https://calver.org/)).
 4. **Testing**: projects must employ some type of testing to ensure quality and long-term stability. The approach will vary depending on the type of project:
@@ -41,20 +41,20 @@ The following is a list of general advice on how to format files to help tools i
             maximum_roof_ratio: 0.80 # unit for a value
             ```
 
-2. **Tabular data**: in general, we prefer CSV files; for very large datasets where performance and storage efficiency are more important than ease-of-use, we prefer to use [Apache Parquet](https://parquet.apache.org/) (.parquet) files.
+2. **Tabular data**: we prefer [Apache Parquet](https://parquet.apache.org/) (.parquet) files due to their performance and storage efficiency, with the following requirements:
     1. Follow [tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) principles (columns are variables, rows are observations) to make data machine-readable.
-    2. Specify units in a second header, using `no_unit` for unitless cases. This simplifies parsing and makes it easier to use of unit-checking tools like [pint](https://pint.readthedocs.io/en/stable/).
+    2. Specify units in the metadata under the `units` key, using `no_unit` for unitless cases. This simplifies parsing and makes it easier to use unit-checking tools like [pint](https://pint.readthedocs.io/en/stable/).
 
-        ???+ example "Tidy tabular data"
+        ???+ example "A tidy tabule with `unit` metadata"
 
-            | year      | country_id  | shape_id  | demand  |
-            |-----------|-------------|-----------|---------|
-            | no_unit   | no_unit     | no_unit   | mwh     |
-            | 2020      | ITA         | North     | 4500    |
-            | 2020      | ITA         | East      | 4800    |
+            | year          | country_id       | shape_id         | demand       |
+            |---------------|------------------|------------------|--------------|
+            | 2020          | ITA              | North            | 4500         |
+            | 2020          | ITA              | East             | 4800         |
+            | *units: year* | *units: no_unit* | *units: no_unit* | *units: mwh* |
 
-3. **Raster data**: we prefer to use GeoTiff (.tiff) files.
-4. **Polygon data**: we prefer [GeoParquet](https://geoparquet.org/) (.parquet).
+3. **Raster data**: we prefer to use GeoTIFF (.tiff) files.
+4. **Polygon data**: we prefer [GeoParquet](https://geoparquet.org/) (.parquet) files.
 5. **Gridded data**: we prefer to use [netCDF](https://www.unidata.ucar.edu/software/netcdf/) (.nc) files.
 
 ## Metadata conventions
@@ -62,18 +62,18 @@ The following is a list of general advice on how to format files to help tools i
 1. For all data: use snake case (`foo_bar`) for headers, keys, indexes, variables, etc. Avoid hyphens (`foo-bar`) and camel case (`FooBar`).
 2. For timeseries data: timeseries must follow [ISO 8601 UTC](https://en.wikipedia.org/wiki/ISO_8601) spec (e.g., 2024-08-01T15:00:00Z).
 3. For national / subnational data:
-    1. Country IDs should always be under the `country_id` naming and follow [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) (e.g., CHE, CHN, GBR, MEX, etc.)
+    1. Country IDs should always be under the `country_id` naming and follow [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) (e.g., CHE, CHN, GBR, MEX, etc).
     2. Sub-regions must be under the `shape_id` naming. This applies even in cases where national resolution is requested (i.e., `country_id`  and `shape_id` should match).
     3. A `shape_spec` key or header should be present, specifying the version of the subregion standard used (e.g., NUTS2024, GADM4.1, ISO 3166-2:2013). This aids in replicability since subregion codes [change quite often](https://ec.europa.eu/eurostat/web/nuts/history).
 
     ???+ example "Example of tabular subnational data"
 
-        | country_id  | shape_id  | shape_spec  | demand  |
-        |-------------|-----------|-------------|---------|
-        | no_unit     | no_unit   | no_unit     | mwh     |
-        | DEU         | DE13      | NUTS2024    | 4500    |
-        | DEU         | DE14      | NUTS2024    | 4800    |
-        | ITA         | ITA0      | GADM4.1     | 20000   |
+        | country_id       | shape_id         | shape_spec       | demand       |
+        |------------------|------------------|------------------|--------------|
+        | DEU              | DE13             | NUTS2024         | 4500         |
+        | DEU              | DE14             | NUTS2024         | 4800         |
+        | ITA              | ITA0             | GADM4.1          | 20000        |
+        | *units: no_unit* | *units: no_unit* | *units: no_unit* | *units: mwh* |
 
 4. For spatial data:
     1. Use `longitude` | `latitude` to express position and avoid ambiguous values like `x` | `y`.

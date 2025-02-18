@@ -22,3 +22,6 @@ gurobi.log
 resources/
 results/
 tests/
+
+# Mkdocs
+.cache/

@@ -22,13 +22,15 @@ module_long_name:
 module_description:
   type: str
   help: "Please provide a description of your module."
+author_given_name:
+  type: str
+  help: "Please provide your given name(s)."
+author_family_name:
+  type: str
+  help: "Please provide your family name(s)."
 license:
   type: str
-  help: "Do you wish us to auto-generate a license file for you?"
+  help: "Please choose a license."
   choices:
     - "MIT"
-    - "No thanks"
-author_name:
-  type: str
-  help: "Please provide your full name for the license file."
-  when: "{{ license != 'No thanks' }}"
+    - "Apache 2.0"

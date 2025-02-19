@@ -1,0 +1,51 @@
+[project]
+name = "data-module-template"
+authors = [
+  { name = "Contributors listed in AUTHORS" },
+]
+readme = "README.md"
+requires-python = ">=3.12"
+keywords = ["energy systems", "modelling", "workflows"]
+license = { text = "MIT" }
+dynamic = ["version"]
+
+
+[project.urls]
+website = "https://clio.readthedocs.io/"
+repository = "https://github.com/calliope-project/data-module-template"
+# documentation = "https://calliope.readthedocs.io"
+changelog = "https://github.com/calliope-project/data-module-template/CHANGELOG"
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+
+[tool.ruff.format]
+exclude = [".*.egg-info", "requirements/**"]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "W", "D", "PT", "UP"]
+# line too long; Black will handle these
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+# Ignore `E402` (import violations) and `F401` (unused imports) in all `__init__.py` files
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "D104"]
+"*.ipynb" = ["E402"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pytest.inioptions]
+minversion = 8.0
+testpaths = "tests"

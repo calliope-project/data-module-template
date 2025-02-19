@@ -1,0 +1,8 @@
+module_short_name: test_module
+module_long_name: Test module
+module_description: A simple module to test the template
+author_given_name: Tester
+author_family_name: McTest Guy
+author_email: tester.mc@foobar.org
+github_org: calliope-project
+license: MIT

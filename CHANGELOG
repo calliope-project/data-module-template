@@ -1,0 +1,15 @@
+# Changelog
+
+## 0.0.2
+
+### Added
+
+- Module copier template
+- Mkdocs configuration and standardised documentation
+- Added ruff and mypy checks
+
+## 0.0.1 - 2025-02-17
+
+### Added
+
+- Created the repo

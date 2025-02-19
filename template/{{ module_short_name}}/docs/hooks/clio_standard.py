@@ -69,10 +69,9 @@ def on_post_build(config):
 
 def create_module_docfile():
     """Save a fully documented page for the requested module."""
-
     authors = MODULE_PATH / "AUTHORS"
     example_config = MODULE_PATH / "config/example.yaml"
-    schema =  MODULE_PATH / "workflow/internal/config.schema.yaml"
+    schema = MODULE_PATH / "workflow/internal/config.schema.yaml"
     citation = MODULE_PATH / "CITATION.cff"
     license = MODULE_PATH / "LICENSE"
     assert all(

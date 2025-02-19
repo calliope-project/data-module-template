@@ -11,6 +11,7 @@ def template_path():
     """Location of the template."""
     return Path(__file__).parent.parent
 
+
 @pytest.fixture(scope="session")
 def simple_answers(template_path):
     """Generic template answers."""

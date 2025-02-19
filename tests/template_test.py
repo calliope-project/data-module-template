@@ -41,9 +41,4 @@ def test_citation_file(simple_template):
 
 def test_mkdocs_build(simple_template):
     """Mkdocs should build without issues."""
-    assert subprocess.run(
-        "mkdocs build",
-        shell=True,
-        check=True,
-        cwd=simple_template
-    )
+    assert subprocess.run("mkdocs build", shell=True, check=True, cwd=simple_template)

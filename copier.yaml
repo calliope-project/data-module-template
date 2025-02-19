@@ -1,9 +1,10 @@
 # === copier settings ===
 _min_copier_version: '9.4.1'
-_templates_suffix: .jinja
+_subdirectory: template
 _skip_if_exists:
   - LICENSE
   - CITATION.cff
+_templates_suffix: .jinja
 
 # === copier auto-generated ===
 
@@ -28,6 +29,11 @@ author_given_name:
 author_family_name:
   type: str
   help: "Please provide your family name(s)."
+github_org:
+  type: str
+  help: >-
+    Please provide the name of the github account or organisation where
+    this module will be created (e.g., 'calliope-project' in 'github.com/calliope-project').
 license:
   type: str
   help: "Please choose a license."

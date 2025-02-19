@@ -1,3 +1,0 @@
-# DO NOT MODIFY THESE VALUES. They aid with module cross-compatibility.
-software-deployment-method: conda 
-use-conda: True

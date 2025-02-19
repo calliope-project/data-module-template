@@ -1,0 +1,4 @@
+# Module settings that users cannot modify.
+resources:
+  automatic:
+    # Links for automatically downloaded files

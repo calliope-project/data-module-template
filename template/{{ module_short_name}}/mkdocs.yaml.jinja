@@ -70,4 +70,6 @@ plugins:
       repository: {{github_org}}/{{module_short_name}}
       branch: main
   - search
+hooks:
+  - docs/hooks/clio_standard.py
 copyright: Copyright &copy; since {{ '%Y' | strftime }} <a href="https://github.com/{{github_org}}/{{module_short_name}}/blob/main/AUTHORS">{{module_short_name}} contributors</a> ({{license}} licensed)

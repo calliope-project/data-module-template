@@ -1,4 +1,5 @@
 # === copier settings ===
+_answers_file: .copier-answers.yaml
 _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
@@ -29,6 +30,13 @@ author_given_name:
 author_family_name:
   type: str
   help: "Please provide your family name(s)."
+author_email:
+  type: str
+  help: Please provide your email address.
+  validator: >-
+    {% if not (author_email | regex_search('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')) %}
+    "Invalid email address."
+    {% endif %}
 github_org:
   type: str
   help: >-

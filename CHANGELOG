@@ -4,9 +4,9 @@
 
 ### Added
 
-- Module copier template
-- Mkdocs configuration and standardised documentation
+- Module copier template with testing, automated docs.
 - Added ruff and mypy checks
+- Added testing for the generated template
 
 ## 0.0.1 - 2025-02-17
 

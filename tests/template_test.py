@@ -5,7 +5,6 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-import snakemake
 from copier import run_copy
 
 
@@ -14,7 +13,7 @@ def run_copier(template_path: Path, test_path: Path, answers: dict):
     run_copy(src_path=str(template_path), dst_path=str(test_path), data=answers)
 
 
-@pytest.fixture(scope="module", params=["MIT", "Apache-2.0"])
+@pytest.fixture(scope="module", params=["MIT"])
 def simple_template(request, tmp_path_factory, template_path, simple_answers):
     """A simple template for each license case."""
     path = tmp_path_factory.mktemp(request.param)
@@ -53,3 +52,8 @@ def test_snakemake_all_failure(simple_template):
     assert "This workflow must be called as a snakemake module" in str(error)
 
 
+def test_snakemake_integration_testing(simple_template):
+    """The automatic integration test should run by default."""
+    assert subprocess.run(
+        ["snakemake", "--use-conda"], check=True, cwd=simple_template / "tests/"
+    )

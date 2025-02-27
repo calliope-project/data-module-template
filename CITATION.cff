@@ -3,7 +3,7 @@
 # https://citation-file-format.github.io/
 cff-version: 1.2.0
 message: If you use this software or data produced by it, please cite it using the metadata from this file.
-title: Data Module Template
+title: clio - data module template
 repository: https://github.com/calliope-project/data-module-template
 license: MIT
 authors:

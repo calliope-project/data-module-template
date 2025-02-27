@@ -1,1 +1,2 @@
 # A minimal example of how to configure this module
+dummy_text: "Configurations must be passed through the `config:` module option."

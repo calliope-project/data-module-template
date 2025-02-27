@@ -3,3 +3,6 @@ description: "Schema for user-provided configuration files."
 type: object
 additionalProperties: false
 properties:
+  dummy_text:
+    description: Innocuous value for template examples. Should be deleted in real applications.
+    type: string

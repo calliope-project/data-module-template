@@ -49,7 +49,7 @@ def test_snakemake_all_failure(simple_template):
     """The 'all' rule should return an error by default."""
     # snake_path = simple_template
     pipe = subprocess.Popen(["snakemake"], cwd=simple_template, stderr=subprocess.PIPE)
-    output, error = pipe.communicate()
+    _, error = pipe.communicate()
     assert "This workflow must be called as a snakemake module" in str(error)
 
 

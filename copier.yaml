@@ -7,9 +7,6 @@ _skip_if_exists:
   - CITATION.cff
 _templates_suffix: .jinja
 
-# === copier auto-generated ===
-
-
 # === copier user provided ===
 module_short_name:
   type: str
@@ -46,5 +43,5 @@ license:
   type: str
   help: "Please choose a license."
   choices:
-    - "MIT"
     - "Apache-2.0"
+    - "MIT"

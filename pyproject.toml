@@ -19,8 +19,10 @@ changelog = "https://github.com/calliope-project/data-module-template/CHANGELOG"
 [tool.mypy]
 disable_error_code = ["import-untyped"]
 
+[tool.ruff]
+builtins = ["snakemake"]
+
 [tool.ruff.format]
-exclude = [".*.egg-info", "requirements/**"]
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
@@ -45,7 +47,3 @@ docstring-quotes = "double"
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[tool.pytest.inioptions]
-minversion = 8.0
-testpaths = "tests"

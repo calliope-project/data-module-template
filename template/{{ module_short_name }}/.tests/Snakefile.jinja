@@ -1,0 +1,30 @@
+configfile: "test_config.yaml"
+
+rule create_external_input:
+    message: "Example of a rule external to your module."
+    output:
+        text_file = "resources/user/user_message.md"
+    run:
+        from pathlib import Path
+        from textwrap import dedent
+        text = dedent("""Modular workflows can be used by more than one project!
+            For example, this text comes from a file external to the module.
+            Try your best to make this workflow reusable so that others may benefit from your methods."""
+        )
+        file_path = Path(output.text_file)
+        with file_path.open("w") as f:
+            f.write(text)
+
+
+module module_{{module_short_name}}:
+    # here, plain paths, URLs and the special markers for code hosting providers (see below) are possible.
+    snakefile: "../workflow/Snakefile"
+    config: config["module_{{module_short_name}}"]
+
+use rule * from module_{{module_short_name}} as module_{{module_short_name}}_*
+
+rule all:
+    message: "A generic test case for your module."
+    default_target: True
+    input:
+        "results/combined_text.md"

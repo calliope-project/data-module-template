@@ -3,7 +3,7 @@ rule dummy_add_text:
     params:
         config_text = config["dummy_text"]
     input:
-        user_file = "resources/user/user_message.md"
+        user_file = "resources/user/user_message.md",
         readme = "resources/automatic/dummy_readme.md"
     output:
         combined = "results/combined_text.md"

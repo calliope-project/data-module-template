@@ -13,7 +13,7 @@ dynamic = ["version"]
 [project.urls]
 website = "https://clio.readthedocs.io/"
 repository = "https://github.com/calliope-project/data-module-template"
-# documentation = "https://calliope.readthedocs.io"
+documentation = "https://clio.readthedocs.io"
 changelog = "https://github.com/calliope-project/data-module-template/CHANGELOG"
 
 [tool.mypy]

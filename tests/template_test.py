@@ -55,5 +55,5 @@ def test_snakemake_all_failure(simple_template):
 def test_snakemake_integration_testing(simple_template):
     """The automatic integration test should run by default."""
     assert subprocess.run(
-        ["snakemake", "--use-conda"], check=True, cwd=simple_template / "tests/"
+        ["snakemake", "--use-conda"], check=True, cwd=simple_template / "tests/integration"
     )

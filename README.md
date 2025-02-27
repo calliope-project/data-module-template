@@ -52,8 +52,9 @@ example_module/
 │   └── user/                      # User inputted files should go here
 ├── results/                       # All module rule outputs should go here
 ├── tests/
-│   ├── Snakefile
-│   └── test_config.yaml
+│   └── integration/               # A lightweight integration test
+│       ├── Snakefile
+│       └── test_config.yaml
 └── workflow/
     ├── Snakefile
     ├── envs/

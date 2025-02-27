@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+import snakemake
 from copier import run_copy
 
 
@@ -42,3 +43,13 @@ def test_citation_file(simple_template):
 def test_mkdocs_build(simple_template):
     """Mkdocs should build without issues."""
     assert subprocess.run("mkdocs build", shell=True, check=True, cwd=simple_template)
+
+
+def test_snakemake_all_failure(simple_template):
+    """The 'all' rule should return an error by default."""
+    # snake_path = simple_template
+    pipe = subprocess.Popen(["snakemake"], cwd=simple_template, stderr=subprocess.PIPE)
+    output, error = pipe.communicate()
+    assert "This workflow must be called as a snakemake module" in str(error)
+
+

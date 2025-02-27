@@ -2,6 +2,7 @@ default_language_version:
   python: python3
 
 repos:
+  # Generic 'file quality' testing
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
@@ -16,11 +17,12 @@ repos:
       - id: check-illegal-windows-names
       - id: check-merge-conflict
       - id: debug-statements
-      # Config file issues
+      # Detect config. file issues
       - id: check-json
       - id: check-yaml
         args: [--unsafe]
 
+  # Python file formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.9.6
     hooks:
@@ -28,16 +30,17 @@ repos:
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
 
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
-    hooks:
-    - id: codespell
-
+  # Snakemake file formatting
   - repo: https://github.com/snakemake/snakefmt
     rev: v0.10.2
     hooks:
       - id: snakefmt
 
+  # Spelling
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+    - id: codespell
 
 ci:  # https://pre-commit.ci/
   autoupdate_schedule: monthly

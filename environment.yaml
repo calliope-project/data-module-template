@@ -17,3 +17,4 @@ dependencies:
   - pip:
     - mkdocs-mermaid2-plugin >= 1.1.0
     - mkdocs-git-committers-plugin-2 >= 2.5.0
+    - "git+https://github.com/calliope-project/clio.git@feature-clio-lib"

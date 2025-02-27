@@ -5,6 +5,7 @@ from textwrap import indent
 
 from cffconvert import Citation
 from clio_tools.data_module import ModuleInterface
+from yaml import safe_dump, safe_load
 
 MODULE_PATH = Path("./")
 DOCS_FILE_PATH = MODULE_PATH / "docs" / "how_to_use.md"
@@ -18,15 +19,15 @@ For more information, please consult the [`clio` documentation](https://clio.rea
 
 Here you can find a quick description of how to interface with this module.
 
-??? info "Interfacing"
+??? info "Interfacing summary"
 
     ```yaml
-    --8<-- "{interface}"
+{interface}
     ```
 
 ???+ info "Visual summary"
 
-    {flowchart}
+{flowchart}
 
 
 ## Configuration
@@ -78,7 +79,7 @@ def on_post_build(config):
 
 def create_module_docfile():
     """Save a fully documented page for the requested module."""
-    name = "{{module_short_name}}"
+    name = "test"
 
     authors = MODULE_PATH / "AUTHORS"
     example_config = MODULE_PATH / "config/example.yaml"
@@ -96,7 +97,7 @@ def create_module_docfile():
     flowchart = ModuleInterface.from_yaml(interface).to_mermaid_flowchart(name)
 
     text = TEMPLATE.format(
-        interface=interface,
+        interface=indent(safe_dump(safe_load(interface.read_text())), "\t"),
         flowchart=indent(flowchart, "\t"),
         example_config=example_config,
         schema=schema,

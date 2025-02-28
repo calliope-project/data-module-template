@@ -20,6 +20,7 @@ copier copy https://github.com/calliope-project/data-module-template.git ./path/
 - Pre-made integration test setup for your module.
 - Pre-made Continuous Integration (CI) settings, ready for [pre-commit.ci](https://pre-commit.ci/).
 - Autommated documentation, ready for [Read the Docs](https://about.readthedocs.com/).
+- Compliant with the [snakemake workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/#).
 
 ## IMPORTANT
 

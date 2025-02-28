@@ -8,18 +8,25 @@ from clio_tools.data_module import ModuleInterface
 from yaml import safe_dump, safe_load
 
 MODULE_PATH = Path("./")
-DOCS_FILE_PATH = MODULE_PATH / "docs" / "how_to_use.md"
+DOCS_FILE_PATH = MODULE_PATH / "docs" / "specification.md"
 
 TEMPLATE = """
-# How to use
+# Specification
+
 This specification is based on `clio` standards.
 For more information, please consult the [`clio` documentation](https://clio.readthedocs.io/).
 
 ## Input - Output structure
 
-Here you can find a quick description of how to interface with this module.
+Here is a general summary of the required **resources**, **results** and **wildcards** needed to use this module.
 
-??? info "Interfacing summary"
+- `resources/` are files needed by the module to operate.
+    - `user/` resource files must be provided before executing the module.
+    - `automatic/` resources will be downloaded at the start of the module's execution.
+- `results/` are files produced by the module. We only list the most relevant ones here, others might be generated in intermediate steps.
+- `wildcards` are filename patterns that can alter the module's behaviour without changing its configuration.
+
+???+ info "Interfacing summary"
 
     ```yaml
 {interface}
@@ -27,7 +34,9 @@ Here you can find a quick description of how to interface with this module.
 
 ???+ info "Visual summary"
 
+    ```mermaid
 {flowchart}
+    ```
 
 
 ## Configuration
@@ -38,7 +47,8 @@ All configuration options can be found in the module's schema.
 ???+ example "Example configuration"
 
     ```yaml
-    --8<-- "{example_config}"
+    module_{{module_short_name}}:
+        --8<-- "{example_config}"
     ```
 
 ??? info "Configuration schema"
@@ -46,6 +56,28 @@ All configuration options can be found in the module's schema.
     ```yaml
     --8<-- "{schema}"
     ```
+
+## How to use
+
+1. Add the necessary module [configuration](#configuration) to your `snakemake` workflow.
+2. Include this module in your workflow specifying a version `tag:` (to protect against future changes) and a `prefix:` (to redirect where the module will place files).
+
+    ??? example "Importing this module"
+
+        ```python
+        module {{module_short_name}}:
+          snakefile: github(
+            "{{github_org}}/{{module_short_name}}",
+            path="workflow/Snakefile",
+            tag="vX.Y.Z"
+          )
+          config: config["module_{{module_short_name}}"]
+          prefix: "results/{{module_short_name}}"
+
+        use rule * from {{module_short_name}} as module_{{module_short_name}}_*
+        ```
+
+For more information, please consult the [`snakemake` documentation](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html).
 
 ## Attribution
 
@@ -79,7 +111,7 @@ def on_post_build(config):
 
 def create_module_docfile():
     """Save a fully documented page for the requested module."""
-    name = "test"
+    name = "{{module_short_name}}"
 
     authors = MODULE_PATH / "AUTHORS"
     example_config = MODULE_PATH / "config/example.yaml"

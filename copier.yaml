@@ -13,7 +13,7 @@ module_short_name:
   help: Please enter your module's short name as used in snakemake (should be in `snake_case`).
   validator: >-
     {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]+$')) %}
-    "Must be in `snake_case` (only letters, digits and underscores are valid)."
+    "Only letters, digits and underscores are valid."
     {% endif %}
 module_long_name:
   type: str
@@ -39,6 +39,10 @@ github_org:
   help: >-
     Please provide the name of the github account or organisation where
     this module will be created (e.g., 'calliope-project' in 'github.com/calliope-project').
+  validator: >-
+    {% if not (github_org | regex_search('^[a-z][a-z0-9_\-]+$')) %}
+    "Only letters, digits, hyphens and underscores are valid."
+    {% endif %}
 license:
   type: str
   help: "Please choose a license."

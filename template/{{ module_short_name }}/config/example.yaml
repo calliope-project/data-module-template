@@ -1,3 +1,2 @@
 # A minimal example of how to configure this module
-# The proper configuration must be passed through the `config:` module option.
-dummy_text: Configuration examples enable users to quickly familiarise themselves with your workflow!
+dummy_text: This is a user input.

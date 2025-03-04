@@ -4,15 +4,16 @@ A template for modular data workflows using [snakemake](https://snakemake.readth
 
 ## How to use this template
 
-1. Install [copier](https://copier.readthedocs.io/en/stable/) with your favourite package management system (we'll assume [mamba](https://mamba.readthedocs.io/en/latest/) in this example).
+1. Install [`copier`](https://copier.readthedocs.io/en/stable/) with your favourite package management system (we'll assume [mamba](https://mamba.readthedocs.io/en/latest/) in this example).
 2. Use `copier` to copy this repo.
-3. Answer some questions so we pre-fill licensing, citiation files, etc...
-4. You're all set up!
 
-```bash
-mamba install copier
-copier copy https://github.com/calliope-project/data-module-template.git ./path/to/destination
-```
+    ```bash
+    mamba install copier
+    copier copy https://github.com/calliope-project/data-module-template.git ./path/to/destination
+    ```
+
+3. Answer some questions so can we pre-fill licensing, citiation files, etc...
+4. You're all set up!
 
 ## Features
 

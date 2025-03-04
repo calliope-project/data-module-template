@@ -1,14 +1,16 @@
+### ---
+# Project setup
+### ---
 [project]
-name = "data-module-template"
 authors = [
   { name = "Contributors listed in AUTHORS" },
 ]
+name = "data-module-template"
+requires-python = ">= 3.12"
+version = "0.1.0"
 readme = "README.md"
-requires-python = ">=3.12"
-keywords = ["energy systems", "modelling", "workflows"]
 license = { text = "MIT" }
-dynamic = ["version"]
-
+dependencies = ["mkdocs-mermaid2-plugin>=1.2.1,<2", "mkdocs-git-committers-plugin-2>=2.5.0,<3", "clio-tools @ git+https://github.com/calliope-project/clio.git"]
 
 [project.urls]
 website = "https://clio.readthedocs.io/"
@@ -16,6 +18,32 @@ repository = "https://github.com/calliope-project/data-module-template"
 documentation = "https://clio.readthedocs.io"
 changelog = "https://github.com/calliope-project/data-module-template/CHANGELOG"
 
+
+[tool.pixi.project]
+channels = ["conda-forge", "bioconda"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+data_module_template = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+cffconvert = ">=2.0.0,<3"
+copier = ">=9.5.0,<10"
+graphviz = ">=12.2.1,<13"
+mkdocs-material = ">=9.6.7,<10"
+mypy = ">=1.15.0,<2"
+pytest = ">=8.3.5,<9"
+ruff = ">=0.9.9,<0.10"
+snakefmt = ">=0.10.2,<0.11"
+snakemake-minimal = ">=8.29.0,<9"
+networkx = ">=3.4.2,<4"  # TODO: remove after clio-tools is released
+
+
+### ---
+# Project tooling
+### ---
 [tool.mypy]
 disable_error_code = ["import-untyped"]
 

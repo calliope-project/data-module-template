@@ -18,9 +18,14 @@ gurobi.log
 ### Notebooks
 .ipynb_checkpoints
 
-# Mutable folders
+# Mutable / cache folders
 tmp/
 temp/
-
-# Mkdocs
 .cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# pixi environments
+.pixi
+*.egg-info

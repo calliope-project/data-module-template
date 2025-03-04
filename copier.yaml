@@ -12,8 +12,8 @@ module_short_name:
   type: str
   help: Please enter your module's short name as used in snakemake (should be in `snake_case`).
   validator: >-
-    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]+$')) %}
-    "Only letters, digits and underscores are valid."
+    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]*$')) %}
+    "Only lowercase letters, digits and underscores are valid."
     {% endif %}
 module_long_name:
   type: str
@@ -23,10 +23,10 @@ module_description:
   help: "Please provide a description of your module."
 author_given_name:
   type: str
-  help: "Please provide your given name(s)."
+  help: "Please provide your given name(s) (e.g., Ursula, Juan, Roald)."
 author_family_name:
   type: str
-  help: "Please provide your family name(s)."
+  help: "Please provide your family name(s) (e.g., Le Guin, Rulfo Vizcaino, Dahl)."
 author_email:
   type: str
   help: Please provide your email address.
@@ -40,8 +40,8 @@ github_org:
     Please provide the name of the github account or organisation where
     this module will be created (e.g., 'calliope-project' in 'github.com/calliope-project').
   validator: >-
-    {% if not (github_org | regex_search('^[a-z][a-z0-9_\-]+$')) %}
-    "Only letters, digits, hyphens and underscores are valid."
+    {% if not (github_org | regex_search('^[a-z][a-z0-9_-]*$')) %}
+    "Only lowercase letters, digits, hyphens and underscores are valid."
     {% endif %}
 license:
   type: str

@@ -1,0 +1,25 @@
+[project]
+name = "{{ module_short_name }}"
+version = "0.1.0"
+authors = ["See AUTHORS file"]
+description = "{{ module_description }}"
+license = "{{ license }}"
+readme = "README.md"
+channels = ["conda-forge", "bioconda"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+homepage = "https://clio.readthedocs.io/"
+
+[dependencies]
+python = ">=3.12"
+graphviz = ">=12.2.1"  # TODO: remove after clio-tools is released
+mkdocs-material = ">=9.6.7"
+mypy = ">=1.15.0"
+pytest = ">=8.3.5"
+ruff = ">=0.9.9"
+snakefmt = ">=0.10.2"
+snakemake-minimal = ">=8.29.0"
+networkx = ">=3.4.2"  # TODO: remove after clio-tools is released
+
+[pypi-dependencies]
+mkdocs-mermaid2-plugin = ">=1.2.1"
+clio-tools = { git = "https://github.com/calliope-project/clio.git"}

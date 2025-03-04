@@ -10,6 +10,7 @@
 ### Byte-compiled files
 __pycache__
 *.pyc
+*.egg-info
 
 ### Snakemake
 .snakemake/
@@ -25,7 +26,3 @@ temp/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-
-# pixi environments
-.pixi
-*.egg-info

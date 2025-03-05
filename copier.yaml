@@ -3,8 +3,18 @@ _answers_file: .copier-answers.yaml
 _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
-  - LICENSE
+  - config/example.yaml
+  - docs/  # documentation must be present, but we do not enforce its shape
+  - "!docs/hooks/clio_standard.py"  # except for the auto-generated standard
+  - tests/  # Tests must be present, but we do not enforce their content
+  - "!tests/clio_test.py"  # except for the set of standard tests
+  - workflow/  # A workflow must be present, but it can have anything within it
+  - "!workflow/profiles/default/config.yaml"  # except that the profile must not change
+  - AUTHORS
   - CITATION.cff
+  - INTERFACE.yaml
+  - pixi.toml
+  - README.md
 _templates_suffix: .jinja
 
 # === copier user provided ===

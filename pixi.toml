@@ -5,7 +5,7 @@ authors = ["See AUTHORS file"]
 description = "A template for `clio` data modules."
 license = "Apache-2.0"
 readme = "README.md"
-channels = ["conda-forge", "bioconda"]
+channels = ["conda-forge"]
 platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 homepage = "https://clio.readthedocs.io/"
 

@@ -39,4 +39,4 @@ def test_mkdocs_build(pixi_built):
 
 def test_pytest(pixi_built):
     """The template's tests should pass by default."""
-    assert subprocess.run("pixi run pytest", shell=True, check=True, cwd=pixi_built)
+    assert subprocess.run("pixi run test", shell=True, check=True, cwd=pixi_built)

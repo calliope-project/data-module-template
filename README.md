@@ -35,6 +35,6 @@ A few things to be aware of.
     - The primary way to test them should be external (calling `module:`, passing resources, and requesting results). Check the pre-made example in `tests/integration` for more info.
     - Internal access (calling the `all:` rule) will not work, as the module will not have the necessary `resources/` to execute properly.
 - **Please respect the 'specification' section of the documentation**
-    - `docs/hooks/clio_standard.py` will auto-generate documentation for you as long as you certain files are filled correctly (`INTERFACE.yaml`, `CITATION.yaml`).
+    - `docs/hooks/clio_standard.py` will auto-generate documentation for you as long as certain files (e.g., `INTERFACE.yaml`, `CITATION.yaml`) are filled correctly.
     - Please **do not modify this file** to ensure all data modules have a similar 'specification' section.
     - If you wish to extend the documentation, feel free to add other sections.

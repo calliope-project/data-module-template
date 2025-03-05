@@ -4,6 +4,6 @@
 
 ### Added
 
-- Module copier template with testing, automated docs.
-- Added ruff and mypy checks
-- Added testing for the generated template
+- Module copier template with standard testing and automated docs.
+- CI checks for formatting and execution in major platforms
+- pixi environment with a lockfile and fully isolated dependencies.

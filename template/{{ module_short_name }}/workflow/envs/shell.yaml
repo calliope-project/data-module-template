@@ -4,4 +4,3 @@ channels:
   - nodefaults
 dependencies:
   - curl=8.9.1
-

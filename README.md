@@ -1,6 +1,14 @@
 # Data module template
 
-A template for modular data workflows using [snakemake](https://snakemake.readthedocs.io/en/stable/), part of the [clio](https://clio.readthedocs.io/) toolset.
+A template for modular data workflows using [`snakemake`](https://snakemake.readthedocs.io/en/stable/), part of the [`clio`](https://clio.readthedocs.io/) toolset.
+
+## Resources
+
+To familarise yourself with `clio` data modules:
+
+- This template auto-generates a minimal example. You can find more about it in `tests/integration/Snakefile`.
+- Read about the `clio` approach in [our documentation](https://clio.readthedocs.io/).
+- Read about `snakemake` modularisation in [their documentation](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#modules).
 
 ## How to use this template
 

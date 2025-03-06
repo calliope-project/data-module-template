@@ -1,5 +1,6 @@
 configfile: "test_config.yaml"
 
+# Emulate how another workflow might create inputs for this module.
 rule create_external_input:
     message: "Example of a rule external to your module."
     output:
@@ -15,14 +16,15 @@ rule create_external_input:
         with file_path.open("w") as f:
             f.write(text)
 
-
+# Import the module and configure it.
+# `snakefile:` can use plain paths, URLs or special github(...) / gitlab(...) markers
 module module_{{module_short_name}}:
-    # here, plain paths, URLs and the special markers for code hosting providers (see below) are possible.
     snakefile: "../../workflow/Snakefile"
     config: config["module_{{module_short_name}}"]
 
 use rule * from module_{{module_short_name}} as module_{{module_short_name}}_*
 
+# Request something from the module
 rule all:
     message: "A generic test case for your module."
     default_target: True

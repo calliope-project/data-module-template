@@ -32,9 +32,7 @@ def pixi_built(template_project):
 
 def test_mkdocs_build(pixi_built):
     """The template's mkdocs should build without issues."""
-    assert subprocess.run(
-        "pixi run build-docs", shell=True, check=True, cwd=pixi_built
-    )
+    assert subprocess.run("pixi run build-docs", shell=True, check=True, cwd=pixi_built)
 
 
 def test_pytest(pixi_built):

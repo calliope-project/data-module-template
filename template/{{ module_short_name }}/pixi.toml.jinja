@@ -11,7 +11,6 @@ homepage = "https://clio.readthedocs.io/"
 
 [dependencies]
 python = ">=3.12"
-graphviz = ">=12.2.1"  # TODO: remove after clio-tools is released
 mkdocs-material = ">=9.6.7"
 mypy = ">=1.15.0"
 pytest = ">=8.3.5"
@@ -19,14 +18,11 @@ ruff = ">=0.9.9"
 snakefmt = ">=0.10.2"
 conda = ">=25.0.0"
 snakemake-minimal = ">=8.29.0"
-networkx = ">=3.4.2"  # TODO: remove after clio-tools is released
-cffconvert = ">=2.0.0"  # TODO: remove after clio-tools is released
-pydantic = ">=2.10.6"  # TODO: remove after clio-tools is released
-pyyaml = ">=6.0.2"  # TODO: remove after clio-tools is released
+cffconvert = ">=2.0.0"
+clio-tools = ">=2025.03.03"
 
 [pypi-dependencies]
 mkdocs-mermaid2-plugin = ">=1.2.1"
-clio-tools = { git = "https://github.com/calliope-project/clio.git"}
 
 [tasks]
 test = {cmd = "pytest tests/"}

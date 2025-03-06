@@ -33,10 +33,10 @@ module_description:
   help: "Please provide a description of your module."
 author_given_name:
   type: str
-  help: "Please provide your given name(s) (e.g., Ursula, Juan, Roald)."
+  help: "Please provide your given name (e.g., Ursula)."
 author_family_name:
   type: str
-  help: "Please provide your family name(s) (e.g., Le Guin, Rulfo Vizcaino, Dahl)."
+  help: "Please provide your family name (e.g., Le Guin)."
 author_email:
   type: str
   help: Please provide your email address.
@@ -53,6 +53,7 @@ github_org:
     {% if not (github_org | regex_search('^[a-z][a-z0-9_-]*$')) %}
     "Only lowercase letters, digits, hyphens and underscores are valid."
     {% endif %}
+  default: "calliope-project"
 license:
   type: str
   help: "Please choose a license."

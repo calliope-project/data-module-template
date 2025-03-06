@@ -6,7 +6,7 @@ description = "{{ module_description }}"
 license = "{{ license }}"
 readme = "README.md"
 channels = ["conda-forge", "bioconda"]
-platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
 homepage = "https://clio.readthedocs.io/"
 
 [dependencies]
@@ -29,4 +29,6 @@ mkdocs-mermaid2-plugin = ">=1.2.1"
 clio-tools = { git = "https://github.com/calliope-project/clio.git"}
 
 [tasks]
-test = {cmd = "pytest"}
+test = {cmd = "pytest tests/"}
+serve-docs = {cmd = "mkdocs serve"}
+build-docs = {cmd = "mkdocs build"}

@@ -6,7 +6,7 @@ description = "A template for `clio` data modules."
 license = "Apache-2.0"
 readme = "README.md"
 channels = ["conda-forge"]
-platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
 homepage = "https://clio.readthedocs.io/"
 
 [dependencies]
@@ -18,4 +18,4 @@ ruff = ">=0.9.9"
 pyyaml = ">=6.0.2"
 
 [tasks]
-test = {cmd = "pytest"}
+test = {cmd = "pytest tests/"}

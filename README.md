@@ -4,16 +4,35 @@ A template for modular data workflows using [snakemake](https://snakemake.readth
 
 ## How to use this template
 
-1. Install [`copier`](https://copier.readthedocs.io/en/stable/) with your favourite package management system (we recommend [pixi](https://pixi.sh/)).
-2. Use `copier` to copy this repo.
+We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once installed, do the following:
 
-    ```bash
-    pixi add copier
-    pixi run copier copy https://github.com/calliope-project/data-module-template.git ./path/to/destination
+1. Install the templater tool [`copier`](https://copier.readthedocs.io/en/stable/).
+
+    ```shell
+    pixi global install copier
+    ```
+
+2. Use `copier` to build a project with this template.
+
+    ```shell
+    copier copy https://github.com/calliope-project/data-module-template.git ./destination_path/
     ```
 
 3. Answer some questions so can we pre-fill licensing, citiation files, etc...
-4. You're all set up!
+4. Initialise the `pixi` project environment of your new module.
+
+    ```shell
+    cd ./destination_path/module_name/  # navigate to the new project
+    pixi install --all  # install the project environment
+    ```
+
+5. Extra: run the auto-generated example module!
+
+    ```shell
+    pixi shell    # activate your project's environment
+    cd tests/integration/  # navigate to the integration example...
+    snakemake --use-conda  # run the example!
+    ```
 
 ## Features
 

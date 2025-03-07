@@ -26,9 +26,7 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
     copier copy https://github.com/calliope-project/data-module-template.git ./destination_path/
     ```
 
-    > [!TIP]
-    >
-    > If your terminal does not have access to `copier` then you may need to update your `PATH` variable to include `~/.pixi/bin`.
+    If your terminal does not have access to `copier` then you may need to update your `PATH` variable to include `~/.pixi/bin`.
 
 3. Answer some questions so can we pre-fill licensing, citation files, etc...
 4. Initialise the `pixi` project environment of your new module.

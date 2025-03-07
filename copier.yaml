@@ -50,7 +50,7 @@ github_org:
     Please provide the name of the github account or organisation where
     this module will be created (e.g., 'calliope-project' in 'github.com/calliope-project').
   validator: >-
-    {% if not (github_org | regex_search('^[a-z][a-z0-9_-]*$')) %}
+    {% if not (github_org | regex_search('^[a-zA-Z0-9][a-zA-Z0-9-]*$')) %}
     "Only lowercase letters, digits, hyphens and underscores are valid."
     {% endif %}
   default: "calliope-project"

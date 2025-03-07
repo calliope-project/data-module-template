@@ -37,9 +37,7 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
 5. Extra: run the auto-generated example module!
 
     ```shell
-    pixi shell    # activate your project's environment
-    cd tests/integration/  # navigate to the integration example...
-    snakemake --use-conda  # run the example!
+    pixi run snakemake --snakefile=tests/integration/Snakefile --use-conda
     ```
 
 ## Features
@@ -54,14 +52,15 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
     - Premade `pytest` setup.
 - Auto-generated documentation, ready for [Read the Docs](https://about.readthedocs.com/).
 
-## IMPORTANT
-
-A few things to be aware of.
-
-- **Modules do not work like regular snakemake workflows**
-    - The primary way to test them should be external (calling `module:`, passing resources, and requesting results). Check the pre-made example in `tests/integration` for more info.
-    - Internal access (calling the `all:` rule) will not work, as the module will not have the necessary `resources/` to execute properly.
-- **Please respect the 'specification' section of the documentation**
-    - `docs/hooks/clio_standard.py` will auto-generate documentation for you as long as certain files (e.g., `INTERFACE.yaml`, `CITATION.yaml`) are filled correctly.
-    - Please **do not modify this file** to ensure all data modules have a similar 'specification' section.
-    - If you wish to extend the documentation, feel free to add other sections.
+> [!IMPORTANT]
+>
+> A few things to be aware of.
+>
+> - **Modules do not work like regular snakemake workflows**
+>     - The primary way to test them should be external (calling `module:`, passing resources, and requesting results). Check the pre-made example in `tests/integration` for more info.
+>     - Internal access (calling the `all:` rule) will not work, as the module will not have the necessary `resources/` to execute properly.
+> - **Please respect the 'specification' section of the documentation**
+>     - `docs/hooks/clio_standard.py` will auto-generate documentation for you as long as certain files (e.g., `INTERFACE.yaml`, `CITATION.yaml`) are filled correctly.
+>     - Please **do not modify this file** to ensure all data modules have a similar 'specification' section.
+>     - If you wish to extend the documentation, feel free to add other sections.
+>

@@ -20,7 +20,7 @@ _templates_suffix: .jinja
 # === copier user provided ===
 module_short_name:
   type: str
-  help: Please enter your module's short name as used in snakemake (should be in `snake_case`).
+  help: Please enter your module's short name as used in snakemake (should be in `snake_case`). This will be folder name within which your module lives.
   validator: >-
     {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]*$')) %}
     "Only lowercase letters, digits and underscores are valid."

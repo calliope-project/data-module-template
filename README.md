@@ -20,7 +20,7 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
     pixi global install copier
     ```
 
-2. Use `copier` to build a project with this template.
+2. Use `copier` to build a project with this template. A new module will be created in a subdirectory corresponding to the module name you chose inside the given `destination_path`.
 
     ```shell
     copier copy https://github.com/calliope-project/data-module-template.git ./destination_path/

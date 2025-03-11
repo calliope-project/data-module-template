@@ -32,13 +32,6 @@ Here is a general summary of the required **resources**, **results** and **wildc
 {interface}
     ```
 
-???+ info "Visual summary"
-
-    ```mermaid
-{flowchart}
-    ```
-
-
 ## Configuration
 
 We recommend to start with the following configuration.
@@ -128,11 +121,8 @@ def create_module_docfile():
         ]
     )
 
-    flowchart = ModuleInterface.from_yaml(interface).to_mermaid_flowchart(name)
-
     text = TEMPLATE.format(
         interface=indent(safe_dump(safe_load(interface.read_text())), "\t"),
-        flowchart=indent(flowchart, "\t"),
         example_config=example_config,
         schema=schema,
         citation=get_apa_citation(citation),

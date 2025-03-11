@@ -39,7 +39,8 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
 5. Extra: run the auto-generated example module!
 
     ```shell
-    pixi run snakemake --snakefile=tests/integration/Snakefile --use-conda
+    cd tests/integration  # go to the integration test...
+    pixi run snakemake --use-conda  # run it!
     ```
 
 ## Features

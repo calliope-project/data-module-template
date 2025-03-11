@@ -5,7 +5,7 @@ configfile: workflow.source_path("./test_config.yaml")
 rule create_external_input:
     message: "Example of a rule external to your module."
     output:
-        text_file = "resources/user/user_message.md"
+        text_file = "results/{{module_short_name}}/resources/user/user_message.md"
     run:
         from pathlib import Path
         from textwrap import dedent
@@ -18,16 +18,19 @@ rule create_external_input:
             f.write(text)
 
 # Import the module and configure it.
-# `snakefile:` can use plain paths, URLs or special github(...) / gitlab(...) markers
-module module_{{module_short_name}}:
+# `snakefile:` specifies the module. It can use file paths and special github(...) / gitlab(...) markers
+# `prefix:` re-routes all input/output paths of the module, helping to avoid file conflicts.
+module {{module_short_name}}:
     snakefile: "../../workflow/Snakefile"
-    config: config["module_{{module_short_name}}"]
+    config: config["{{module_short_name}}"]
+    prefix: "results/{{module_short_name}}/"
 
-use rule * from module_{{module_short_name}} as module_{{module_short_name}}_*
+# rename all module rules with a prefix, to avoid naming conflicts.
+use rule * from {{module_short_name}} as {{module_short_name}}_*
 
 # Request something from the module
 rule all:
     message: "A generic test case for your module."
     default_target: True
     input:
-        "results/combined_text.md"
+        "results/{{module_short_name}}/results/combined_text.md"

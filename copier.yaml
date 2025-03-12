@@ -1,0 +1,68 @@
+# === copier settings ===
+_answers_file: .copier-answers.yaml
+_min_copier_version: '9.4.1'
+_subdirectory: template
+_skip_if_exists:
+  - config/example.yaml
+  - docs/  # documentation must be present, but we do not enforce its shape
+  - "!docs/hooks/clio_standard.py"  # except for the auto-generated standard
+  - tests/  # Tests must be present, but we do not enforce their content
+  - "!tests/clio_test.py"  # except for the set of standard tests
+  - workflow/  # A workflow must be present, but it can have anything within it
+  - "!workflow/profiles/default/config.yaml"  # except that the profile must not change
+  - AUTHORS
+  - CITATION.cff
+  - INTERFACE.yaml
+  - pixi.toml
+  - README.md
+_templates_suffix: .jinja
+
+# === copier user provided ===
+module_short_name:
+  type: str
+  help: Please enter your module's short name as used in snakemake (should be in `snake_case`). This will be folder name within which your module lives.
+  validator: >-
+    {% if not (module_short_name | regex_search('^[a-z][a-z0-9_]*$')) %}
+    "Only lowercase letters, digits and underscores are valid."
+    {% endif %}
+module_long_name:
+  type: str
+  help: Please enter your module's long name (e.g., PV capacity factors, Hydropower, Heat-pump profiles, etc).
+module_description:
+  type: str
+  help: "Please provide a description of your module."
+author_given_name:
+  type: str
+  help: "Please provide your given name (e.g., Ursula)."
+author_family_name:
+  type: str
+  help: "Please provide your family name (e.g., Le Guin)."
+author_email:
+  type: str
+  help: Please provide your email address.
+  validator: >-
+    {% if not (author_email | regex_search('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+[.][a-zA-Z0-9-.]+$')) %}
+    "Invalid email address."
+    {% endif %}
+github_org:
+  type: str
+  help: >-
+    Please provide the name of the github account or organisation where
+    this module will be created (e.g., 'calliope-project' in 'github.com/calliope-project').
+  validator: >-
+    {% if not (github_org | regex_search('^[a-zA-Z0-9][a-zA-Z0-9-]*$')) %}
+    "Only lowercase letters, digits, hyphens and underscores are valid."
+    {% endif %}
+  default: "calliope-project"
+license:
+  type: str
+  help: "Please choose a license."
+  choices:
+    - "Apache-2.0"
+    - "MIT"
+readthedocs:
+  type: bool
+  help: "Do you want a pre-generated Read the Docs setup?"
+  choices:
+    "Yes": true
+    "No": false

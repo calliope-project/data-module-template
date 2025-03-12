@@ -1,0 +1,21 @@
+[project]
+name = "data-module-template"
+version = "0.1.0"
+authors = ["See AUTHORS file"]
+description = "A template for `clio` data modules."
+license = "Apache-2.0"
+readme = "README.md"
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
+homepage = "https://clio.readthedocs.io/"
+
+[dependencies]
+python = ">=3.12"
+copier = ">=9.5.0"
+mypy = ">=1.15.0"
+pytest = ">=8.3.5"
+ruff = ">=0.9.9"
+pyyaml = ">=6.0.2"
+
+[tasks]
+test = {cmd = "pytest tests/"}

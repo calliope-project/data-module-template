@@ -60,3 +60,9 @@ license:
   choices:
     - "Apache-2.0"
     - "MIT"
+readthedocs:
+  type: bool
+  help: "Do you want a pre-generated Read the Docs setup?"
+  choices:
+    "Yes": true
+    "No": false

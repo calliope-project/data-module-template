@@ -4,10 +4,10 @@ Should be deleted in real workflows.
 """
 
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    import snakemake
+    snakemake: Any
 
 config = snakemake.params.config_text
 readme = Path(snakemake.input.readme).read_text()

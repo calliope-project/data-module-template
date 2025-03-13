@@ -3,8 +3,6 @@
 from pathlib import Path
 from textwrap import indent
 
-from cffconvert import Citation
-from clio_tools.data_module import ModuleInterface
 from yaml import safe_dump, safe_load
 
 MODULE_PATH = Path("./")
@@ -74,10 +72,6 @@ For more information, please consult the [`snakemake` documentation](https://sna
 
 ## Attribution
 
-!!! quote "Citation"
-
-    {citation}
-
 ??? info "Contributors"
 
     --8<-- "{authors}"
@@ -106,8 +100,6 @@ def on_post_build(config):
 
 def create_module_docfile():
     """Save a fully documented page for the requested module."""
-    name = "{{module_short_name}}"
-
     authors = MODULE_PATH / "AUTHORS"
     example_config = MODULE_PATH / "config/example.yaml"
     schema = MODULE_PATH / "workflow/internal/config.schema.yaml"
@@ -125,16 +117,9 @@ def create_module_docfile():
         interface=indent(safe_dump(safe_load(interface.read_text())), "\t"),
         example_config=example_config,
         schema=schema,
-        citation=get_apa_citation(citation),
         authors=authors,
         license=license,
     )
 
     with open(DOCS_FILE_PATH, "w") as file:
         file.write(text)
-
-
-def get_apa_citation(citation_file: Path) -> str:
-    """Return APA citation if the .cff file is correct."""
-    cff = Citation(citation_file.read_text())
-    return cff.as_apalike()

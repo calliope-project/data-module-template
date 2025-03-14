@@ -10,21 +10,28 @@ platforms = ["win-64", "linux-64", "osx-arm64"]
 homepage = "https://clio.readthedocs.io/"
 
 [dependencies]
-python = ">=3.12"
-mkdocs-material = ">=9.6.7"
+clio-tools = ">=2025.03.03"
+conda = ">=25.0.0"
+ipdb = ">=0.13.13"
 mypy = ">=1.15.0"
 pytest = ">=8.3.5"
+python = ">=3.12"
 ruff = ">=0.9.9"
 snakefmt = ">=0.10.2"
-conda = ">=25.0.0"
 snakemake-minimal = ">=8.29.0"
-cffconvert = ">=2.0.0"
-clio-tools = ">=2025.03.03"
-
-[pypi-dependencies]
-mkdocs-mermaid2-plugin = ">=1.2.1"
 
 [tasks]
 test = {cmd = "pytest tests/"}
+
+[feature.docs.dependencies]
+mkdocs-material = ">=9.6.7"
+
+[feature.docs.pypi-dependencies]
+mkdocs-mermaid2-plugin = ">=1.2.1"
+
+[feature.docs.tasks]
 serve-docs = {cmd = "mkdocs serve"}
 build-docs = {cmd = "mkdocs build"}
+
+[environments]
+docs = ["docs"]

@@ -5,7 +5,6 @@ _subdirectory: template
 _skip_if_exists:
   - config/example.yaml
   - docs/  # documentation must be present, but we do not enforce its shape
-  - "!docs/hooks/clio_standard.py"  # except for the auto-generated standard
   - tests/  # Tests must be present, but we do not enforce their content
   - "!tests/clio_test.py"  # except for the set of standard tests
   - workflow/  # A workflow must be present, but it can have anything within it
@@ -60,9 +59,3 @@ license:
   choices:
     - "Apache-2.0"
     - "MIT"
-readthedocs:
-  type: bool
-  help: "Do you want a pre-generated Read the Docs setup?"
-  choices:
-    "Yes": true
-    "No": false

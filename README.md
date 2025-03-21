@@ -53,7 +53,7 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
 - Pre-made integration test setup for your module.
     - Continuous Integration (CI) settings, ready for [pre-commit.ci](https://pre-commit.ci/).
     - Premade `pytest` setup.
-- Optional auto-generated documentation, ready for [Read the Docs](https://about.readthedocs.com/).
+- Optional auto-generated documentation, ready for [Read the Docs](https://about.readthedocs.com/) or [Github Pages](https://pages.github.com/).
 
 > [!IMPORTANT]
 >

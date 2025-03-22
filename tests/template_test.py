@@ -13,8 +13,13 @@ def template_project(request, tmp_path_factory, template_path, simple_answers):
     path = tmp_path_factory.mktemp(request.param)
     modified_answers = deepcopy(simple_answers)
     modified_answers.update(license=request.param)
-    run_copy(src_path=str(template_path), dst_path=str(path), data=modified_answers)
-    return path / modified_answers["module_short_name"]
+    run_copy(
+        src_path=str(template_path),
+        dst_path=str(path),
+        data=modified_answers,
+        vcs_ref="HEAD",  # Use the latest version for the test
+    )
+    return path
 
 
 @pytest.fixture(scope="module")

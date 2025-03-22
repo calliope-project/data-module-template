@@ -1,5 +1,4 @@
 # === copier settings ===
-_answers_file: .copier-answers.yml
 _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
@@ -15,6 +14,7 @@ _skip_if_exists:
   - pixi.toml
   - README.md
 _templates_suffix: .jinja
+_answers_file: .copier-answers.yml
 
 # === copier user provided ===
 module_short_name:

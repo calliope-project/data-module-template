@@ -1,5 +1,5 @@
 # === copier settings ===
-_answers_file: .copier-answers.yaml
+_answers_file: .copier-answers.yml
 _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:

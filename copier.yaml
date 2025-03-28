@@ -3,11 +3,11 @@ _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
   # Attempt to respect user changes, except for a few standard files.
-  - config/*
-  - docs/*
-  - tests/*
+  - config/
+  - docs/
+  - tests/
   - "!tests/clio_test.py"  # set of standard tests
-  - workflow/*
+  - workflow/
   - "!workflow/profiles/default/config.yaml"  # standard profile
   - AUTHORS
   - CITATION.cff

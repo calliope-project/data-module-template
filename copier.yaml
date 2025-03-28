@@ -4,21 +4,17 @@ _subdirectory: template
 _skip_if_exists:
   # Respect user changes, except for a few standard files.
   - config/*
+  - "!config/README.md"  # Necessary for the snakemake workflow catalog
   - docs/*
   - resources/*
   - results/*
   - tests/*
-  - "!tests/clio_test.py"
+  - "!tests/clio_test.py"  # Standard integration tests
   - workflow/
-  - "!workflow/profiles"
+  - "!workflow/profiles"  # Profiles should be equal across projects
   - AUTHORS
   - CITATION.cff
   - INTERFACE.yaml
-  - mkdocs.yaml
-  - pixi.toml
-  - mypy.ini
-  - ruff.toml
-  - .gitignore
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml
 

@@ -2,19 +2,22 @@
 _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
-  # Attempt to respect user changes, except for a few standard files.
-  - "*"
-  - "!.github/workflows/check-latest-template-spec.yml"
-  - "!.github/workflows/pr-ci.yml"
-  - "!config/README.md"
+  # Respect user changes, except for a few standard files.
+  - config/*
+  - docs/*
+  - resources/*
+  - results/*
+  - tests/*
   - "!tests/clio_test.py"
-  - "!workflow/profiles/default/config.yaml"
-  - "!.editorconfig"
-  - "!.pre-commit-config.yaml"
-  - "!.snakemake-workflow-catalog.yml"
-  - "!mypy.ini"
-  - "!ruff.toml"
-  - "!pixi.toml"
+  - workflow/
+  - "!workflow/profiles"
+  - AUTHORS
+  - CITATION.cff
+  - INTERFACE.yaml
+  - mkdocs.yaml
+  - pixi.toml
+  - mypy.ini
+  - ruff.toml
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml
 

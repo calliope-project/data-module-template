@@ -18,6 +18,7 @@ _skip_if_exists:
   - pixi.toml
   - mypy.ini
   - ruff.toml
+  - .gitignore
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml
 

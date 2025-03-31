@@ -8,7 +8,9 @@ rule dummy_download:
         url=internal["resources"]["automatic"]["dummy_readme"],
     output:
         readme="resources/automatic/dummy_readme.md",
+    log:
+        "logs/dummy_download.log",
     conda:
         "../envs/shell.yaml"
     shell:
-        "curl -sSLo {output.readme} \"{params.url}\""
+        'curl -sSLo {output.readme} "{params.url}"'

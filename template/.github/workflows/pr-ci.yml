@@ -5,5 +5,5 @@ on:
       - "main"
 
 jobs:
-  copier-update:
+  ci-tests:
     uses: calliope-project/data-module-template/.github/workflows/template-pr-ci.yml@fix-copier-update-ci-action

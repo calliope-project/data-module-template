@@ -1,6 +1,5 @@
 [project]
 name = "data-module-template"
-version = "0.1.0"
 authors = ["See AUTHORS file"]
 description = "A template for `clio` data modules."
 license = "Apache-2.0"

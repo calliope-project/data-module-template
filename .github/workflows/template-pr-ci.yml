@@ -1,4 +1,4 @@
-name: CI
+name: Reusable Pull Request CI tests for modules
 
 on:
   workflow_call:

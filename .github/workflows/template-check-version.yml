@@ -1,7 +1,7 @@
 # Taken from https://github.com/arup-group/actions-city-modelling-lab/blob/main/.github/workflows/template-check.yml
 # MIT licensed
 
-name: Reusable template checker
+name: Reusable workflow for keeping up-to-date with template changes.
 on:
   workflow_call:
 
@@ -10,14 +10,18 @@ defaults:
     shell: bash -l {0}
 
 jobs:
-  copier-update:
+  copier-issue:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     env:
       UPDATE: "false"
       CONFLICTS: ""
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: "main"
       - uses: mamba-org/setup-micromamba@v2
         with:
           micromamba-version: "1.5.10-0"
@@ -51,42 +55,9 @@ jobs:
             echo EOF
           } >> "$GITHUB_ENV"
 
-      - if: env.UPDATE != 'true'
-        run: |
-          echo CONFLICTS=No conflicts, merging in these changes should be a piece of cake 🍰! >> $GITHUB_ENV
-
       - if: env.UPDATE == 'true'
-        name: Get commit compare URL
         run: |
-          COMMIT=$(grep "_commit:" .copier-answers.yml | cut -f2 -d' ')
-          echo "COMPARE=${{ env.COMPARE_PREFIX }}...${COMMIT}" >> $GITHUB_ENV
-
-      - name: Comment on PR with request to update against template.
-        if: env.UPDATE == 'true'
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          message: |
-            >[!CAUTION]
-            >🤖 **beep boop** 🤖
-            >This is the template updater bot.
-            >Your project is out of date relative to the upstream template.
-            >
-            >Please run `copier update --skip-answered` and create a new PR with those changes.
-            >
-            >You can compare the template changes here: <${{ env.COMPARE }}>
-
-            <details><summary>Click to view possible conflicts</summary>
-
-            ${{ env.CONFLICTS }}
-
-            </details>
-
-          pr-number: ${{ github.event.number }}
-          comment-tag: execution
-
-      - name: Delete a comment
-        if: env.UPDATE != 'true'
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          comment-tag: execution
-          mode: delete
+          gh issue --repo ${{ github.repository }} \
+            create --title "Template update" --body "The template has been updated. Please run `copier update` and merge changes."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

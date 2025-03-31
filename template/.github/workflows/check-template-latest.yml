@@ -1,0 +1,10 @@
+# Check for changes in the upstream template. If changes are found, a comment is added to the PR.
+name: Template check.
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  copier-update:
+    uses: calliope-project/data-module-template/.github/workflows/template-check.yml@fix-copier-update-ci-action

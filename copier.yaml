@@ -22,7 +22,6 @@ _skip_if_exists:
   - results/**
   - tests/**
   - workflow/**
-  - .gitignore
   - .readthedocs.yaml
   - AUTHORS
   - CITATION.cff

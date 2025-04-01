@@ -1,4 +1,4 @@
-# Taken from https://github.com/arup-group/actions-city-modelling-lab/blob/main/.github/workflows/template-check.yml
+# Adapted from https://github.com/arup-group/actions-city-modelling-lab/blob/main/.github/workflows/template-check.yml
 # MIT licensed
 
 name: Reusable workflow for keeping up-to-date with template changes.
@@ -17,45 +17,30 @@ jobs:
       issues: write
     env:
       UPDATE: "false"
-      CONFLICTS: ""
     steps:
       - uses: actions/checkout@v4
         with:
           ref: "main"
-      - uses: mamba-org/setup-micromamba@v2
-        with:
-          micromamba-version: "1.5.10-0"
-          environment-name: ${{ github.event.repository.name }}-copier
-          create-args: copier python=3.12
-          post-cleanup: all
-          cache-environment: true
 
-      - name: Get current Copier commit to compare against
-        run: |
-          COMMIT=$(grep "_commit:" .copier-answers.yml | cut -f2 -d' ')
-          SRC=$(grep "_src_path:" .copier-answers.yml | cut -f2 -d' ')
-          echo "COMPARE_PREFIX=${SRC%.*}/compare/${COMMIT}" >> $GITHUB_ENV
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.8.3
+
+      - name: Add copier
+        run: pixi add copier
 
       - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update
           git config --global user.email check@dummy.bot.com
 
-      - run: copier update -A -f
+      - name: Run copier update
+        run: pixi run copier update --skip-answered --defaults
 
-      - id: requires-update
+      - name: Check for template changes
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
 
-      - if: env.UPDATE == 'true'
-        name: Find merge conflicts
-        run: |
-          {
-            CONFLICTS=$(git diff --name-only --diff-filter=U --relative)
-            echo 'CONFLICTS<<EOF'
-            echo EOF
-          } >> "$GITHUB_ENV"
-
-      - if: env.UPDATE == 'true'
+      - name: Open issue
+        if: env.UPDATE == 'true'
         run: |
           gh issue --repo ${{ github.repository }} \
             create --title "Template update" --body "The template has been updated. Please run `copier update` and merge changes."

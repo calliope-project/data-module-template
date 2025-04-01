@@ -1,19 +1,32 @@
 # === copier settings ===
 _min_copier_version: '9.4.1'
 _subdirectory: template
+_exclude:
+    # copier defaults
+    - "copier.yaml"
+    - "copier.yaml"
+    - "~*"
+    - "*.py[co]"
+    - "__pycache__"
+    - ".git"
+    - ".DS_Store"
+    - ".svn"
+    # mutable folders
+    - "{% if _copier_operation == 'update' -%}docs/**{% endif %}"
+    - "{% if _copier_operation == 'update' -%}resources/**{% endif %}"
+    - "{% if _copier_operation == 'update' -%}results/**{% endif %}"
+    - "{% if _copier_operation == 'update' -%}workflow/**{% endif %}"
+    - "{% if _copier_operation == 'update' -%}template/tests/integration/**{% endif %}"
 _skip_if_exists:
   # Respect user changes, except for a few standard files.
-  - config/**
-  - "!config/README.md"  # Necessary for the snakemake workflow catalog
-  - docs/**
-  - resources/**
-  - results/**
-  - tests/**
-  - workflow/**
+  - config/config.yaml
+  - .gitignore
+  - .readthedocs.yaml
   - AUTHORS
   - CITATION.cff
   - INTERFACE.yaml
-  - "!tests/clio_test.py"  # Standard integration tests
+  - mkdocs.yaml
+  - pixi.toml
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml
 

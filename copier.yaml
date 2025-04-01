@@ -3,13 +3,13 @@ _min_copier_version: '9.4.1'
 _subdirectory: template
 _skip_if_exists:
   # Respect user changes, except for a few standard files.
-  - config/*
+  - config/**
   - "!config/README.md"  # Necessary for the snakemake workflow catalog
-  - docs/*
-  - resources/*
-  - results/*
-  - tests/*
-  - workflow/*
+  - docs/**
+  - resources/**
+  - results/**
+  - tests/**
+  - workflow/**
   - AUTHORS
   - CITATION.cff
   - INTERFACE.yaml

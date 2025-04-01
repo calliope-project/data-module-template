@@ -67,7 +67,7 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
 > - **Please be sure to maintain the following files to ensure `clio` compatibility**
 >   - These are:
 >     - `INTERFACE.yaml`: a simple description of the module's input/output structure.
->     - `config/example.yaml`: a basic functioning example of how to configure this module.
+>     - `config/config.yaml`: a basic functioning example of how to configure this module.
 >     - `workflow/internal/config.schema.yaml`: the module's configuration schema, used by `snakemake` for [validation](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html).
 >     - `AUTHORS` / `CITATION.cff` / `LICENSE`: licensing and attribution of this module's code and methods.
 >   - If the optional auto-generated documentation was selected, `docs/hooks/clio_standard.py` will use these files to automatically generate a basic Read the Docs website.

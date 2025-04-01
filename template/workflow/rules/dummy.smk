@@ -8,6 +8,8 @@ rule dummy_add_text:
         readme="resources/automatic/dummy_readme.md",
     output:
         combined="results/combined_text.md",
+    log:
+        "logs/dummy_add_text.log",
     conda:
         "../envs/shell.yaml"
     script:

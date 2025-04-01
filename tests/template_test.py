@@ -43,3 +43,10 @@ def test_mkdocs_build(pixi_built):
 def test_pytest(pixi_built):
     """The template's tests should pass by default."""
     assert subprocess.run("pixi run test", shell=True, check=True, cwd=pixi_built)
+
+
+def test_linting(pixi_built):
+    """The generated project should result in perfect snakemake linting."""
+    assert subprocess.run(
+        "pixi run snakemake --lint", shell=True, check=True, cwd=pixi_built
+    )

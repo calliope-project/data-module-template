@@ -1,0 +1,48 @@
+# Adapted from https://github.com/arup-group/actions-city-modelling-lab/blob/main/.github/workflows/template-check.yml
+# MIT licensed
+
+name: Reusable workflow for keeping up-to-date with template changes.
+on:
+  workflow_call:
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  copier-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    env:
+      UPDATE: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "latest"  # This avoids comparing against development versions.
+
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.8.3
+
+      - name: Add copier
+        run: pixi add copier
+
+      - name: Add dummy GitHub credentials
+        run: |
+          git config --global user.name Copier update
+          git config --global user.email check@dummy.bot.com
+
+      - name: Run copier update
+        run: pixi run copier update --skip-answered --defaults
+
+      - name: Check for template changes
+        run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
+
+      - name: Open issue
+        if: env.UPDATE == 'true'
+        run: |
+          gh issue --repo ${{ github.repository }} \
+            create --title "Template update" --body "The template has been updated. Please run `copier update` and merge changes."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

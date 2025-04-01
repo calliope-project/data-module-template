@@ -3,11 +3,13 @@
 Should be deleted in real workflows.
 """
 
+import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     snakemake: Any
+sys.stderr = open(snakemake.log[0], "w")
 
 config = snakemake.params.config_text
 readme = Path(snakemake.input.readme).read_text()

@@ -11,15 +11,18 @@ _exclude:
     - ".git"
     - ".DS_Store"
     - ".svn"
+    # Do not add the dummy example when updating
+    - "{% if _copier_operation == 'update' -%}workflow/rules/automatic.smk{% endif %}"
+    - "{% if _copier_operation == 'update' -%}workflow/rules/dummy.smk{% endif %}"
+    - "{% if _copier_operation == 'update' -%}workflow/scripts/dummy_script.py{% endif %}"
 _skip_if_exists:
   # Respect user changes, except for a few standard files.
-  - config/
-  - docs/
-  - resources/
-  - results/
-  - tests/
-  - "!tests/clio_test.py"
-  - workflow/
+  - config
+  - docs
+  - resources
+  - results
+  - tests
+  - workflow
   - .gitignore
   - .readthedocs.yaml
   - AUTHORS
@@ -27,6 +30,7 @@ _skip_if_exists:
   - INTERFACE.yaml
   - mkdocs.yaml
   - pixi.toml
+  - "!tests/clio_test.py"
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml
 

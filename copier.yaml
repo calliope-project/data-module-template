@@ -29,6 +29,7 @@ _skip_if_exists:
   - INTERFACE.yaml
   - mkdocs.yaml
   - pixi.toml
+  - "!config/README.md"
   - "!tests/clio_test.py"
 _templates_suffix: .jinja
 _answers_file: .copier-answers.yml

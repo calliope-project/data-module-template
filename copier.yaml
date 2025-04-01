@@ -10,7 +10,7 @@ _skip_if_exists:
   - results/*
   - tests/*
   - "!tests/clio_test.py"  # Standard integration tests
-  - workflow/**
+  - "**/workflow/**"
   - "!workflow/profiles"  # Profiles should be equal across projects
   - AUTHORS
   - CITATION.cff

@@ -29,9 +29,9 @@ jobs:
         run: |
           pixi add copier
           pixi install
-          git stash
+          git stash push -m pixi.lock -m pixi.toml
 
-      - name: Add dummy GitHub credentials.
+      - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update
           git config --global user.email check@dummy.bot.com

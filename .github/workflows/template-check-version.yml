@@ -25,9 +25,11 @@ jobs:
       - name: Setup pixi
         uses: prefix-dev/setup-pixi@v0.8.3
 
-      - name: Add copier
-        run: pixi add copier
-
+      - name: Add copier, install it, and stash to avoid 'dirty' copier warnings
+        run: |
+          pixi add copier
+          pixi install
+          git stash push -m "Stash pixi lock and toml" -- pixi.lock pixi.toml
       - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update

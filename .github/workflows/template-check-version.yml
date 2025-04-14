@@ -22,21 +22,20 @@ jobs:
         with:
           ref: "latest"  # This avoids comparing against development versions.
 
-      - name: Setup pixi
-        uses: prefix-dev/setup-pixi@v0.8.3
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: ${{ github.event.repository.name }}-copier
+          create-args: copier python=3.12
+          post-cleanup: all
+          cache-environment: true
 
-      - name: Add copier, install it, and stash to avoid 'dirty' copier warnings
-        run: |
-          pixi add copier
-          pixi install
-          git stash push -m "Stash pixi lock and toml" -- pixi.lock pixi.toml
       - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update
           git config --global user.email check@dummy.bot.com
 
       - name: Run copier update
-        run: pixi run copier update --skip-answered --defaults
+        run: copier update --skip-answered --defaults
 
       - name: Check for template changes
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV

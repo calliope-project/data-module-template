@@ -44,6 +44,7 @@ jobs:
         if: env.UPDATE == 'true'
         run: |
           gh issue --repo ${{ github.repository }} \
-            create --title "Template update" --body "The template has been updated. Please run `copier update` and merge changes."
+          create --title "Template update" \
+          --body "The template has been updated.\n\nPlease run \`copier update\` in your local copy, review the changes, and merge them into the repository.\n\nIf you need help, refer to the \`clio\` documentation or reach out to the calliope project team."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

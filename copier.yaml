@@ -13,7 +13,7 @@ _exclude:
     - ".svn"
     # Do not add the dummy example when updating
     - "{% if _copier_operation == 'update' -%}workflow/envs/shell.yaml{% endif %}"
-    - "{% if _copier_operation == 'update' -%}workflow/internal/config.shema.yaml{% endif %}"
+    - "{% if _copier_operation == 'update' -%}workflow/internal/config.schema.yaml{% endif %}"
     - "{% if _copier_operation == 'update' -%}workflow/internal/settings.yaml{% endif %}"
     - "{% if _copier_operation == 'update' -%}workflow/rules/automatic.smk{% endif %}"
     - "{% if _copier_operation == 'update' -%}workflow/rules/dummy.smk{% endif %}"

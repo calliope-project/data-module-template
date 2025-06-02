@@ -19,8 +19,6 @@ jobs:
       UPDATE: "false"
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: "latest"  # This avoids comparing against development versions.
 
       - uses: mamba-org/setup-micromamba@v2
         with:

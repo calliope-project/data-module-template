@@ -27,6 +27,9 @@ jobs:
           post-cleanup: all
           cache-environment: true
 
+      - name: Activate mamba environment
+        run: mamba activate ${{ github.event.repository.name }}-copier
+
       - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update

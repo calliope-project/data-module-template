@@ -37,7 +37,7 @@ jobs:
       - name: Display differences
         run: git status --porcelain
 
-      - name: Set update flag if changes occured
+      - name: Set update flag if changes occurred
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
 
       - name: Show environment variables

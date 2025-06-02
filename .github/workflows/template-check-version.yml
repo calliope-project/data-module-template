@@ -16,7 +16,7 @@ jobs:
       contents: read
       issues: write
     env:
-      UPDATE: "false"
+      UPDATE: false
     steps:
       - uses: actions/checkout@v4
 
@@ -35,11 +35,17 @@ jobs:
       - name: Run copier update
         run: copier update --skip-answered --defaults
 
-      - name: Check for template changes
+      - name: Wait a bit for copier cleanups
+        run: sleep 10s
+
+      - name: Display differences
+        run: git status --porcelain
+
+      - name: Set update flag if changes occured
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
 
       - name: Open issue
-        if: env.UPDATE == 'true'
+        if: env.UPDATE == true
         run: |
           gh issue --repo ${{ github.repository }} \
           create --title "Template update" \

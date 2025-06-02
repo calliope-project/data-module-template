@@ -44,6 +44,10 @@ jobs:
       - name: Set update flag if changes occured
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
 
+      - name: Show environment variables
+        run: |
+          echo "$UPDATE"
+
       - name: Open issue
         if: env.UPDATE == true
         run: |

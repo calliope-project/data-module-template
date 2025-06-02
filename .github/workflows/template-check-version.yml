@@ -20,17 +20,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: mamba-org/setup-micromamba@v2
-        with:
-          environment-name: ${{ github.event.repository.name }}-copier
-          create-args: copier python=3.12
-          post-cleanup: all
-          cache-environment: true
-
       - name: Add dummy GitHub credentials
         run: |
           git config --global user.name Copier update
           git config --global user.email check@dummy.bot.com
+
+      - uses: prefix-dev/setup-pixi@v0.8.8
+        with:
+          cache: true
+          pixi-bin-path: ${{ runner.temp }}/bin/pixi
+          pixi-version: v0.44.0
+          run-install: false
+          post-cleanup: true
+
+      - name: Add copier
+        run: pixi global install copier
 
       - name: Run copier update
         run: copier update --skip-answered --defaults

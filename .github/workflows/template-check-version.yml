@@ -25,7 +25,8 @@ jobs:
           git config --global user.name Copier update
           git config --global user.email check@dummy.bot.com
 
-      - uses: prefix-dev/setup-pixi@v0.8.8
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.8.8
         with:
           cache: true
           pixi-bin-path: ${{ runner.temp }}/bin/pixi
@@ -33,11 +34,10 @@ jobs:
           run-install: true
           post-cleanup: true
 
-      - name: Add copier
-        run: pixi add copier
+      - run: pixi add copier
 
       - name: Run copier update
-        run: copier update --skip-answered --defaults
+        run: pixi run copier update --skip-answered --defaults
 
       - name: Wait a bit for copier cleanups
         run: sleep 10s

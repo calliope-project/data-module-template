@@ -16,16 +16,12 @@ jobs:
       contents: read
       issues: write
     env:
-      UPDATE: "false"
+      UPDATE: false
     steps:
       - uses: actions/checkout@v4
 
-      - uses: mamba-org/setup-micromamba@v2
-        with:
-          environment-name: ${{ github.event.repository.name }}-copier
-          create-args: copier python=3.12
-          post-cleanup: all
-          cache-environment: true
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
       - name: Add dummy GitHub credentials
         run: |
@@ -33,13 +29,23 @@ jobs:
           git config --global user.email check@dummy.bot.com
 
       - name: Run copier update
-        run: copier update --skip-answered --defaults
+        run: uvx copier update --skip-answered --defaults
 
-      - name: Check for template changes
+      - name: Wait a bit for copier cleanups
+        run: sleep 10s
+
+      - name: Display differences
+        run: git status --porcelain
+
+      - name: Set update flag if changes occurred
         run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
 
+      - name: Show environment variables
+        run: |
+          echo "$UPDATE"
+
       - name: Open issue
-        if: env.UPDATE == 'true'
+        if: env.UPDATE == true
         run: |
           gh issue --repo ${{ github.repository }} \
           create --title "Template update" \

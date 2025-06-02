@@ -33,6 +33,7 @@ jobs:
           pixi-version: v0.44.0
           run-install: true
           post-cleanup: true
+          activate-environment: true
 
       # Stash hides modifications to pixi.lock / pixi.toml caused by adding copier
       - name: Setup copier
@@ -42,7 +43,7 @@ jobs:
           git stash clear
 
       - name: Run copier update
-        run: pixi run copier update --skip-answered --defaults
+        run: copier update --skip-answered --defaults
 
       - name: Wait a bit for copier cleanups
         run: sleep 10s

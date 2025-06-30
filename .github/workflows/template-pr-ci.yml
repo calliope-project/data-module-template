@@ -14,6 +14,20 @@ jobs:
         python-version: ["3.12"]
     steps:
       - uses: actions/checkout@v4
+      - name: Conditionally set up .cdsapirc
+        shell: bash
+        run: |
+          if [ -n "${{ secrets.CDSAPI_KEY }}" ]; then
+            if [[ "$RUNNER_OS" == "Windows" ]]; then
+              cdsapirc_path="$USERPROFILE/.cdsapirc"
+            else
+              cdsapirc_path="$HOME/.cdsapirc"
+            fi
+            echo "url = https://cds.climate.copernicus.eu/api" >> "$cdsapirc_path"
+            echo "key = ${{ secrets.CDSAPI_KEY }}" >> "$cdsapirc_path"
+          else
+            echo "CDSAPI_KEY secret is empty or not set. Skipping .cdsapirc setup."
+          fi
       - name: setup-pixi
         uses: prefix-dev/setup-pixi@v0.8.3
       - name: Run tests

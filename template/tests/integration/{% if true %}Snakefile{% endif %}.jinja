@@ -23,7 +23,7 @@ rule create_external_input:
 module {{module_short_name}}:
     snakefile: "../../workflow/Snakefile"
     config: config["{{module_short_name}}"]
-    prefix: "results/{{module_short_name}}/"
+    prefix: "results/integration_test/"
 
 # rename all module rules with a prefix, to avoid naming conflicts.
 use rule * from {{module_short_name}} as {{module_short_name}}_*
@@ -33,4 +33,4 @@ rule all:
     message: "A generic test case for your module."
     default_target: True
     input:
-        "results/{{module_short_name}}/results/combined_text.md"
+        "results/integration_test/results/combined_text.md"

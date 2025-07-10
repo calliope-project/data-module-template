@@ -20,3 +20,9 @@ jobs:
         run: pixi run pytest tests/clio_test.py
       - name: Run linting
         run: pixi run snakemake --lint
+      - name: Archive integration test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-logs
+          path: tests/integration/results/integration_test/logs
+          retention-days: 30

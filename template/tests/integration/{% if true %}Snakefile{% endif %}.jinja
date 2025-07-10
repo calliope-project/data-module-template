@@ -5,7 +5,7 @@ configfile: workflow.source_path("./test_config.yaml")
 rule create_external_input:
     message: "Example of a rule external to your module."
     output:
-        text_file = "results/{{module_short_name}}/resources/user/user_message.md"
+        text_file = "results/integration_test/resources/user/user_message.md"
     run:
         from pathlib import Path
         from textwrap import dedent

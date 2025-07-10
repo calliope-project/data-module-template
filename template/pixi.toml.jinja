@@ -21,7 +21,7 @@ snakefmt = ">=0.10.2"
 snakemake-minimal = ">=8.29.0"
 
 [tasks]
-test = {cmd = "pytest tests/"}
+test-integration = {cmd = "pytest tests/clio_test.py"}
 
 [feature.docs.dependencies]
 mkdocs-material = ">=9.6.7"

@@ -21,6 +21,8 @@ with open(workflow.source_path("internal/settings.yaml"), "r") as f:
 include: "rules/automatic.smk"
 include: "rules/dummy.smk"
 
+# Add additional files to be delivered alongside the workflow here.
+# e.g.: workflow.source_path("scripts/_utils.py")
 
 rule all:
     message:

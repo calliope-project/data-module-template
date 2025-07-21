@@ -30,7 +30,6 @@ _skip_if_exists:
   - AUTHORS
   - CITATION.cff
   - INTERFACE.yaml
-  - mkdocs.yaml
   # Special cases
   - "!config/README.md"
   - "!tests/clio_test.py"

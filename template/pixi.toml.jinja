@@ -22,16 +22,3 @@ snakemake-minimal = ">=8.29.0"
 
 [tasks]
 test-integration = {cmd = "pytest tests/clio_test.py"}
-
-[feature.docs.dependencies]
-mkdocs-material = ">=9.6.7"
-
-[feature.docs.pypi-dependencies]
-mkdocs-mermaid2-plugin = ">=1.2.1"
-
-[feature.docs.tasks]
-serve-docs = {cmd = "mkdocs serve"}
-build-docs = {cmd = "mkdocs build"}
-
-[environments]
-docs = ["docs"]

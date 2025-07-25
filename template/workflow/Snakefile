@@ -22,6 +22,8 @@ include: "rules/automatic.smk"
 include: "rules/dummy.smk"
 
 # Add additional files to be delivered alongside the workflow here.
+# This is needed e.g. for python code files that are never
+# explicitly used as a script or input in a snakemake rule.
 # e.g.: workflow.source_path("scripts/_utils.py")
 
 rule all:

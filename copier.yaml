@@ -30,8 +30,7 @@ _skip_if_exists:
   - AUTHORS
   - CITATION.cff
   - INTERFACE.yaml
-  - mkdocs.yaml
-  - pixi.toml
+  # Special cases: these files should not be user-modified, even though they are in user-modifiable directories
   - "!config/README.md"
   - "!tests/clio_test.py"
 _templates_suffix: .jinja

@@ -47,7 +47,8 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
 
 ## Features
 
-- Standardised layout compliant with the [snakemake workflow catalogue's](https://snakemake.github.io/snakemake-workflow-catalog/#) listing requirements.
+- Standardised layout compliant with the [snakemake workflow catalogue's](https://snakemake.github.io/snakemake-workflow-catalog/#) listing requirements, enabling them to be automatically included in their listings once published. Read more about those requirements [here](https://snakemake.github.io/snakemake-workflow-catalog/docs/catalog.html#standardized-usage-workflows).
+- Standardised input/output structure across modules:
   - `resources/`: files needed for the module's processes.
     - `user/`: files that should be provided by users. Document them well!
     - `automatic/`: files that the module downloads or prepares in intermediate steps.
@@ -56,7 +57,6 @@ We recommend using [`pixi`](https://pixi.sh/) as your package manager. Once inst
   - Continuous Integration (CI) settings, ready for [pre-commit.ci](https://pre-commit.ci/).
   - GitHub actions to automate chores during pull requests and releases.
   - Premade `pytest` setup.
-- Documentation setup, ready for [Read the Docs](https://about.readthedocs.com/) or [Github Pages](https://pages.github.com/).
 
 > [!IMPORTANT]
 >

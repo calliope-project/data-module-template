@@ -2,6 +2,9 @@ name: Reusable Pull Request CI tests for modules
 
 on:
   workflow_call:
+    secrets:
+      CDSAPI_KEY:
+        required: false
 
 jobs:
   build:
@@ -12,6 +15,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.12"]
+    env:
+      CDSAPI_KEY: ${{ secrets.CDSAPI_KEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup pixi
